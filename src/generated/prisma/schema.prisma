@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int         @id @default(autoincrement())
+  email    String      @unique
+  name     String?
+  age      Int         @default(16)
+  password String
+  groups   UserGroup[] // Relation to groups
+}
+
+model Group {
+  id      Int         @id @default(autoincrement())
+  name    String      @unique
+  members UserGroup[] // Relation to users
+}
+
+// Join table for User and Group
+model UserGroup {
+  user     User     @relation(fields: [userId], references: [id])
+  userId   Int
+  group    Group    @relation(fields: [groupId], references: [id])
+  groupId  Int
+  joinedAt DateTime @default(now())
+  role     String   @default("member") // e.g., "admin", "member"
+
+  @@id([userId, groupId])
+}
+
+model Workout {
+  id          Int              @id @default(autoincrement())
+  name        String           @unique
+  description String?
+  sessions    SessionWorkout[] // Relation to join table
+}
+
+model Session {
+  id          Int              @id @default(autoincrement())
+  name        String           @unique
+  description String?
+  workouts    SessionWorkout[] // Relation to join table
+}
+
+// Join table for Session and Workout
+model SessionWorkout {
+  session   Session @relation(fields: [sessionId], references: [id])
+  sessionId Int
+  workout   Workout @relation(fields: [workoutId], references: [id])
+  workoutId Int
+  order     Int // Optional: to maintain workout order in a session
+
+  @@id([sessionId, workoutId])
+}
