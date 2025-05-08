@@ -35,3 +35,24 @@ const { ...userWithoutPassword } = user as { password: string } & Record<string,
     )
   }
 }
+
+
+
+export async function GET() {
+    try {
+        const users = await prisma.user.findMany({
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                age: true
+            }
+        })
+        return NextResponse.json(users)
+    } catch (error) {
+        return NextResponse.json(
+            { error: 'Failed to fetch users' },
+            { status: 500 }
+        )
+    }
+}
