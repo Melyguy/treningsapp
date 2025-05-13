@@ -66,7 +66,7 @@ export function Userform() {
                 value={formData.age}
                 onChange={(e) => setFormData({...formData, age: parseInt(e.target.value)})}
                 className="w-full h-12 bg-gray-100 rounded-lg p-3"
-                min="13"
+                min="16"
                 required
               />
             </div>

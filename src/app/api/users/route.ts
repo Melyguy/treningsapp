@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
 
+// Interface for user registration data
 interface UserData {
   name: string | null
   email: string
@@ -11,11 +12,15 @@ interface UserData {
   password: string
 }
 
+// Handle user registration
 export async function POST(request: Request) {
   try {
-    const body = await request.json() as UserData
+    const body = await request.json() as UserData;
+    
+    // Hash the password before storing
     const hashedPassword = await bcrypt.hash(body.password, 10)
 
+    // Create new user in database
     const user = await prisma.user.create({
       data: {
         name: body.name,
@@ -25,8 +30,8 @@ export async function POST(request: Request) {
       },
     })
 
-    // Type assertion to handle password property
-const { ...userWithoutPassword } = user as { password: string } & Record<string, any>
+    // Remove password from response for security
+    const { ...userWithoutPassword } = user as { password: string } & Record<string, any>
     return NextResponse.json(userWithoutPassword)
   } catch (error) {
     return NextResponse.json(
@@ -36,8 +41,7 @@ const { ...userWithoutPassword } = user as { password: string } & Record<string,
   }
 }
 
-
-
+// Fetch all users (excluding sensitive data)
 export async function GET() {
     try {
         const users = await prisma.user.findMany({
@@ -46,6 +50,7 @@ export async function GET() {
                 name: true,
                 email: true,
                 age: true
+                // Password intentionally excluded
             }
         })
         return NextResponse.json(users)
