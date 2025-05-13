@@ -42,7 +42,18 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ### Planlegging
 Jeg fikk i oppgave å lage en treningsnettside med database som skulle inneholde bruker, treningsøkter og grupper. Jeg startet med å planlegge hvordan nettsiden skulle se ut og hva jeg skulle bruke for å lage nettsiden og databasen. Jeg landet til slutt på å bruke railway for å hoste en postgres databasen og bruke prisma og nextjs for å koble til denne databasen fra frontend.
 ### Databasemodell
-Som sagt så brukte jeg **prisma** og railway for å lage databasen gjennom et nextJS prosjekt. Jeg endte opp med noen få forskjellige tabeller som: User, Workout,Group,Session. 
+Som sagt så brukte jeg **prisma** og **railway** for å lage databasen gjennom et nextJS prosjekt. Jeg endte opp med noen få forskjellige tabeller som: User, Workout,Group,Session. Her er et eksempel på strukturen av en bruker:
+```prisma
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  workouts  Workout[]
+  groups    UserGroup[]
+} 
+```
+Jeg brukte lang tid på å lære meg hvordan jeg skulle sette disse opp til å fungere sammen med frontend rammeverket jeg jobber med som er som sagt nextJS. Jeg fikk det endelig til og har et resultat jeg er veldig fornøyd med på denne delen av oppgaven. Jeg har lært masse om hvordan man setter opp en database.
 ### Hente og vise data
 
 ### Versjonskontroll
