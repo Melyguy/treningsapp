@@ -39,8 +39,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Dokumentasjon
 
-### dag 1
+### Planlegging
 Jeg fikk i oppgave å lage en treningsnettside med database som skulle inneholde bruker, treningsøkter og grupper. Jeg startet med å planlegge hvordan nettsiden skulle se ut og hva jeg skulle bruke for å lage nettsiden og databasen. Jeg landet til slutt på å bruke railway for å hoste en postgres databasen og bruke prisma og nextjs for å koble til denne databasen fra frontend.
-### dag 2
+### Databasemodell
 
-### dag 3
+### Hente og vise data
+
+### Versjonskontroll
