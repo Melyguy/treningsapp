@@ -90,6 +90,7 @@ export default function ViewMembers() {
                     <div>
                       <p className="font-medium">{member.user.name}</p>
                       <p className="text-sm text-gray-500">{member.user.email}</p>
+                      <p className="text-sm font-medium text-gray-500">UserID: {member.userId}</p>
                     </div>
                     <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
                       {member.role}

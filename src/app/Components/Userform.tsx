@@ -21,7 +21,7 @@ export function Userform() {
           
           if (response.ok) {
             alert('User created successfully!')
-            setFormData({ name: '', email: '', age: 16, password: '' })
+            setFormData({ name: '', email: '', age: 18, password: '' })
           } else {
             const error = await response.json()
             alert(error.error || 'Failed to create user')
