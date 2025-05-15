@@ -55,5 +55,6 @@ model User {
 ```
 Jeg brukte lang tid på å lære meg hvordan jeg skulle sette disse opp til å fungere sammen med frontend rammeverket jeg jobber med som er som sagt nextJS. Jeg fikk det endelig til og har et resultat jeg er veldig fornøyd med på denne delen av oppgaven. Jeg har lært masse om hvordan man setter opp en database.
 ### Hente og vise data
-For å hente ut dataen og vise brukte jeg typescript. Jeg brukte diverse route filer for å hente(GET) og lage/poste(POST). Jeg kan da hente ut dataen fra routene og bruke en UI-component for å vise til brukeren. Dette fungerte veldig bra og var ikke klyngete spaghetti kode som var veldig nice på øynene mens jeg jobba. Jeg hadde satt opp et grid som viser all informasjonen om brukere workouts og gruppene.  
+For å hente ut dataen og vise brukte jeg typescript. Jeg brukte diverse route filer for å hente(GET) og lage/poste(POST). Jeg kan da hente ut dataen fra routene og bruke en UI-component for å vise til brukeren. Dette fungerte veldig bra og var ikke klyngete spaghetti kode som var veldig nice på øynene mens jeg jobba. Jeg hadde satt opp et grid som viser all informasjonen om brukere workouts og gruppene. Jeg lærte masse om hvordan jeg skal vise data fra en database i frontend.  
 ### Versjonskontroll
+For versjonskontroll brukte jeg github og git commandoer. Jeg brukte dette siden det er en enkel og god måte å passe på at du ikke mister prosjekter og en lett måte å jobbe på andre platformer. Så hvis jeg vil jobbe hjemme kan jeg det uten å måtte manuellt flytte filene over.
